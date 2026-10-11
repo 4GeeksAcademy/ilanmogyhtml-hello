@@ -1,286 +1,286 @@
-:root {
-	color-scheme: light;
-	--paper: #f2f0e8;
-	--ink: #ac4201;
-	--muted: #686a60;
-	--acid: #033780;
-	--red: #ac4201;
-	--blue: #2455D6;
-	--line: rgba(25, 26, 22, 0.2);
-	--mono: "DM Mono", monospace;
-	--sans: "Manrope", sans-serif;
-}
+:root { /* Defines global design tokens on the root HTML element. */
+  color-scheme: light; /* Tells the browser this design uses a light color scheme. */
+  --paper: #f2f0e8; /* Stores the page's light background color. */
+  --ink: #ac4201; /* Stores the primary foreground color. */
+  --muted: #686a60; /* Stores a softer color for secondary text. */
+  --acid: #033780; /* Stores the deep blue accent/background color. */
+  --red: #ac4201; /* Stores the red accent color. */
+  --blue: #2455D6; /* Stores the blue used for focus and hover states. */
+  --line: rgba(25, 26, 22, 0.2); /* Stores a translucent color for borders. */
+  --mono: "DM Mono", monospace; /* Creates a reusable monospace font stack. */
+  --sans: "Manrope", sans-serif; /* Creates a reusable sans-serif font stack. */
+} /* Ends the global variable declarations. */
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", sans-serif; }
-a { color: inherit; }
-a:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
-.skip-link { position: fixed; z-index: 10; top: 0.5rem; left: 0.5rem; padding: 0.75rem 1rem; transform: translateY(-160%); background: var(--acid); color: var(--paper); }
-.skip-link:focus { transform: translateY(0); }
+* { box-sizing: border-box; } /* Includes padding and borders within element dimensions. */
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; } /* Smooths anchor scrolling and leaves space above targets. */
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", sans-serif; } /* Removes default margins and sets page colors and font. */
+a { color: inherit; } /* Makes links use the surrounding text color. */
+a:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; } /* Highlights keyboard-focused links with a visible outline. */
+.skip-link { position: fixed; z-index: 10; top: 0.5rem; left: 0.5rem; padding: 0.75rem 1rem; transform: translateY(-160%); background: var(--acid); color: var(--paper); } /* Hides the fixed accessibility link until it receives focus. */
+.skip-link:focus { transform: translateY(0); } /* Brings the skip link onscreen when focused. */
 
-.site-header {
-	position: sticky;
-	z-index: 5;
-	top: 0;
-	display: flex;
-	min-height: 4.75rem;
-	align-items: center;
-	justify-content: space-between;
-	gap: 2rem;
-	padding: 0 5vw;
-	border-bottom: 1px solid var(--line);
-	background: var(--paper);
-}
-.wordmark { font-size: 0.88rem; font-weight: 800; text-decoration: none; text-transform: uppercase; }
-.wordmark span { color: var(--red); }
-.site-nav { display: flex; align-items: center; gap: clamp(1rem, 3vw, 3rem); }
-.site-nav a { font-size: 0.78rem; font-weight: 700; text-decoration: none; }
-.site-nav a:hover { color: var(--blue); }
-.nav-index { margin-right: 0.45rem; color: var(--muted); font-family: var(--mono); font-size: 0.65rem; }
+.site-header { /* Styles the persistent header containing the site name and navigation. */
+  position: sticky; /* Keeps the header visible while scrolling past it. */
+  z-index: 5; /* Places the header above ordinary page content. */
+  top: 0; /* Pins the sticky header to the viewport's top edge. */
+  display: flex; /* Arranges the header's direct children in a flexible row. */
+  min-height: 4.75rem; /* Sets the header's minimum height. */
+  align-items: center; /* Vertically centers the header contents. */
+  justify-content: space-between; /* Pushes the site name and navigation to opposite sides. */
+  gap: 2rem; /* Adds space between the header's children. */
+  padding: 0 5vw; /* Adds horizontal spacing relative to the viewport width. */
+  border-bottom: 1px solid var(--line); /* Draws a subtle divider below the header. */
+  background: var(--paper); /* Gives the sticky header an opaque page-colored background. */
+} /* Ends the site header rule. */
+.wordmark { font-size: 0.88rem; font-weight: 800; text-decoration: none; text-transform: uppercase; } /* Makes the site name bold, uppercase, and un-underlined. */
+.wordmark span { color: var(--red); } /* Colors the name span with the red accent. */
+.site-nav { display: flex; align-items: center; gap: clamp(1rem, 3vw, 3rem); } /* Arranges navigation links in a centered row with responsive gaps. */
+.site-nav a { font-size: 0.78rem; font-weight: 700; text-decoration: none; } /* Styles navigation links as small, bold, plain text. */
+.site-nav a:hover { color: var(--blue); } /* Changes a navigation link to blue while hovered. */
+.nav-index { margin-right: 0.45rem; color: var(--muted); font-family: var(--mono); font-size: 0.65rem; } /* Styles section numbers with small muted monospace text. */
 
-main { overflow: clip; }
-.panel { min-height: 100svh; padding: clamp(4rem, 8vw, 8rem) 8vw; }
-.eyebrow { margin: 0 0 1.5rem; font-family: var(--mono); font-size: 0.72rem; line-height: 1.5; text-transform: uppercase; }
-.hero {
-	position: relative;
-	display: flex;
-	min-height: calc(100svh - 4.75rem);
-	align-items: center;
-	gap: 5vw;
-	padding: 6vw 8vw;
-	background: var(--acid);
-}
-.hero-copy { position: relative; z-index: 1; flex: 1.05 1 0; }
-.hero h1 { max-width: 8ch; margin: 0; font-size: clamp(3rem, 6.5vw, 7rem); font-weight: 800; line-height: 0.88; text-transform: uppercase; }
-.hero h1 span { 
-	background: linear-gradient(180deg, #F6C56A 
-	0%, #E85D35 45%, #B93824 100%);
-	-webkit-background-clip: text;
-	background-clip: text; 
-	color: transparent;
- }
-.hero-intro { max-width: 31rem; margin: 2rem 0; font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.65; color: #F2F0E8; }
-.hero-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-.button-link { display: inline-flex; min-height: 3rem; align-items: center; gap: 1rem; padding: 0.7rem 1rem; border: 1px solid var(--ink); font-size: 0.76rem; font-weight: 800; text-decoration: none; text-transform: uppercase; background: transparent; color: var(--paper) }
-.button-link:hover { background: var(--paper); color: var(--ink); }
-.hero-art { position: relative; flex: 0.95 1 0; min-height: min(67vh, 42rem); margin: 0; background: var(--ink); }
-.hero-art img { display: block; width: 100%; height: 100%; min-height: inherit; object-fit: cover; filter: saturate(0.78); }
-.image-note { position: absolute; right: -1rem; bottom: 1.5rem; max-width: 10rem; padding: 0.85rem 1rem; background: var(--red); color: var(--paper); font-family: var(--mono); font-size: 0.68rem; line-height: 1.5; text-transform: uppercase; }
-.scroll-note { position: absolute; right: 5vw; bottom: 1.5rem; font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; writing-mode: vertical-rl; }
+main { overflow: clip; } /* Clips content that extends beyond the main element's edges. */
+.panel { min-height: 100svh; padding: clamp(4rem, 8vw, 8rem) 8vw; } /* Makes each panel at least viewport height with responsive spacing. */
+.eyebrow { margin: 0 0 1.5rem; font-family: var(--mono); font-size: 0.72rem; line-height: 1.5; text-transform: uppercase; } /* Styles the small uppercase labels above section headings. */
+.hero { /* Defines the hero section's main layout and appearance. */
+  position: relative; /* Provides a positioning reference for absolute children. */
+  display: flex; /* Places hero text and image in a flexible row. */
+  min-height: calc(100svh - 4.75rem); /* Fills the viewport below the desktop header at minimum. */
+  align-items: center; /* Vertically centers the hero columns. */
+  gap: 5vw; /* Adds a viewport-scaled gap between text and image. */
+  padding: 6vw 8vw; /* Adds responsive space around hero content. */
+  background: var(--acid); /* Gives the hero its deep blue background. */
+} /* Ends the hero section rule. */
+.hero-copy { position: relative; z-index: 1; flex: 1.05 1 0; } /* Places the text above nearby layers and gives it a flexible column width. */
+.hero h1 { max-width: 8ch; margin: 0; font-size: clamp(3rem, 6.5vw, 7rem); font-weight: 800; line-height: 0.88; text-transform: uppercase; } /* Sets the hero title's width, responsive size, weight, and compact uppercase style. */
+.hero h1 span { /* Applies the gradient text effect to the hero title span. */
+  background: linear-gradient(180deg, #F6C56A /* Starts the title gradient with warm yellow. */
+  0%, #E85D35 45%, #B93824 100%); /* Fills the title with a vertical yellow-to-red gradient. */
+  -webkit-background-clip: text; /* Clips the gradient to text in WebKit-based browsers. */
+  background-clip: text; /* Clips the background gradient to the text glyphs. */
+  color: transparent; /* Shows the clipped gradient instead of a solid text color. */
+ } /* Ends the gradient text rule. */
+.hero-intro { max-width: 31rem; margin: 2rem 0; font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.65; color: #F2F0E8; } /* Limits the intro width and sets responsive readable light-colored text. */
+.hero-links { display: flex; flex-wrap: wrap; gap: 0.75rem; } /* Places hero links in a row that can wrap with consistent gaps. */
+.button-link { display: inline-flex; min-height: 3rem; align-items: center; gap: 1rem; padding: 0.7rem 1rem; border: 1px solid var(--ink); font-size: 0.76rem; font-weight: 800; text-decoration: none; text-transform: uppercase; background: transparent; color: var(--paper) } /* Styles each hero link as an uppercase outlined button. */
+.button-link:hover { background: var(--paper); color: var(--ink); } /* Inverts the button colors on hover. */
+.hero-art { position: relative; flex: 0.95 1 0; min-height: min(67vh, 42rem); margin: 0; background: var(--ink); } /* Sets the image column's flexible width, minimum height, and positioning context. */
+.hero-art img { display: block; width: 100%; height: 100%; min-height: inherit; object-fit: cover; filter: saturate(0.78); } /* Fills and crops the image to its container while reducing saturation slightly. */
+.image-note { position: absolute; right: -1rem; bottom: 1.5rem; max-width: 10rem; padding: 0.85rem 1rem; background: var(--red); color: var(--paper); font-family: var(--mono); font-size: 0.68rem; line-height: 1.5; text-transform: uppercase; } /* Positions and styles the caption over the lower-right of the image. */
+.scroll-note { position: absolute; right: 5vw; bottom: 1.5rem; font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; writing-mode: vertical-rl; } /* Places a small vertical scroll prompt at the hero's lower-right edge. */
 
-.about, .career { display: flex; align-items: center; justify-content: space-between; gap: 10vw; }
-.about { background: #f4ede3; }
-.section-heading { flex: 0 1 38%; }
-.section-title { margin: 0; font-size: clamp(3.7rem, 6.8vw, 6.2rem); font-weight: 800; line-height: 0.92; text-transform: uppercase; }
-.about-copy { flex: 1 1 62%; max-width: 43rem; }
-.about-copy blockquote { margin: 0 0 2.5rem; font-size: clamp(1.7rem, 3.4vw, 3.6rem); font-weight: 700; line-height: 1.2; }
-.about-copy p { max-width: 34rem; margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.8; font-weight: 400; }
-.career {
-  background: linear-gradient(
-    115deg,
-    #856580 0%,
-    #a36f80 55%,
-    #c1847b 100%
-  );
-  color: var(--paper);
- }
-.career .eyebrow { color: var(--paper); }
-.career-list { flex: 1 1 62%; margin: 0; padding: 0; border-top: 1px solid rgba(242, 240, 232, 0.35); list-style: none; counter-reset: milestones; }
-.career-list li { display: flex; gap: 1.25rem; padding: 1.6rem 0; border-bottom: 1px solid rgba(242, 240, 232, 0.35); counter-increment: milestones; }
-.career-list li::before { flex: 0 0 3rem; color: var(--paper); content: "0" counter(milestones); font-family: var(--mono); font-size: 0.72rem; }
-.career-list article { flex: 1; }
-.career-list h3 { margin: 0 0 0.4rem; font-size: clamp(1.15rem, 2vw, 1.65rem); }
-.career-list p { max-width: 32rem; margin: 0; color: #c0c1b7; font-size: 0.9rem; line-height: 1.7; }
+.about, .career { display: flex; align-items: center; justify-content: space-between; gap: 10vw; } /* Aligns about and career content in spaced horizontal flex layouts. */
+.about { background: #f4ede3; } /* Sets the about section's light background. */
+.section-heading { flex: 0 1 38%; } /* Gives each section heading a starting width of 38 percent. */
+.section-title { margin: 0; font-size: clamp(3.7rem, 6.8vw, 6.2rem); font-weight: 800; line-height: 0.92; text-transform: uppercase; } /* Sets section titles' responsive size, weight, and compact uppercase style. */
+.about-copy { flex: 1 1 62%; max-width: 43rem; } /* Lets the biography fill available width while limiting its maximum size. */
+.about-copy blockquote { margin: 0 0 2.5rem; font-size: clamp(1.7rem, 3.4vw, 3.6rem); font-weight: 700; line-height: 1.2; } /* Styles the quote as large bold text with room below it. */
+.about-copy p { max-width: 34rem; margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.8; font-weight: 400; } /* Limits the biography line length and styles it as readable muted text. */
+.career { /* Defines the career panel background and text color. */
+  background: linear-gradient( /* Starts the career panel's diagonal background gradient. */
+    115deg, /* Sets the gradient direction to 115 degrees. */
+    #856580 0%, /* Starts with muted purple. */
+    #a36f80 55%, /* Transitions to rose at 55 percent. */
+    #c1847b 100% /* Ends with a lighter rose shade. */
+  ); /* Finishes the gradient value. */
+  color: var(--paper); /* Uses the light paper color for text over the gradient. */
+ } /* Ends the career section rule. */
+.career .eyebrow { color: var(--paper); } /* Keeps the career section label light against its background. */
+.career-list { flex: 1 1 62%; margin: 0; padding: 0; border-top: 1px solid rgba(242, 240, 232, 0.35); list-style: none; counter-reset: milestones; } /* Sizes the list, removes default spacing and bullets, draws a top line, and initializes numbering. */
+.career-list li { display: flex; gap: 1.25rem; padding: 1.6rem 0; border-bottom: 1px solid rgba(242, 240, 232, 0.35); counter-increment: milestones; } /* Lays out each milestone, adds a divider, and increments its number. */
+.career-list li::before { flex: 0 0 3rem; color: var(--paper); content: "0" counter(milestones); font-family: var(--mono); font-size: 0.72rem; } /* Generates a leading-zero number before each milestone. */
+.career-list article { flex: 1; } /* Lets each milestone article use the remaining row width. */
+.career-list h3 { margin: 0 0 0.4rem; font-size: clamp(1.15rem, 2vw, 1.65rem); } /* Removes default heading spacing and applies a responsive heading size. */
+.career-list p { max-width: 32rem; margin: 0; color: #c0c1b7; font-size: 0.9rem; line-height: 1.7; } /* Limits milestone text width and applies softer, readable text. */
 
-.shows { display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient( 110deg, #9b718e 0%, #d58b91 35%, #f3a18d 68%, #f8cb83 100% ); }
-.shows .eyebrow { color: var(--acid); }
-.shows-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-.shows-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
-.shows .section-title { max-width: 8ch; }
-.shows-heading p { max-width: 18rem; margin: 0 0 0.6rem; font-size: 0.92rem; line-height: 1.7; }
-.show-empty { display: flex; min-height: 12rem; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 4rem; padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.55); border-bottom: 1px solid rgba(255, 255, 255, 0.55); }
-.show-empty p { margin: 0; font-size: clamp(1.5rem, 3vw, 2.7rem); font-weight: 700; }
-.show-empty span { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; }
-.site-footer { display: flex; justify-content: space-between; gap: 1rem; padding-top: 2rem; font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; }
+.shows { display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient( 110deg, #9b718e 0%, #d58b91 35%, #f3a18d 68%, #f8cb83 100% ); } /* Stacks shows content vertically, spaces it out, and applies a multicolor gradient. */
+.shows .eyebrow { color: var(--acid); } /* Colors the shows section label with the blue accent. */
+.shows-content { flex: 1; display: flex; flex-direction: column; justify-content: center; } /* Lets shows content fill available space and centers it vertically. */
+.shows-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; } /* Places the title and invitation in a spaced row, aligned along their lower edges. */
+.shows .section-title { max-width: 8ch; } /* Limits the shows title width to encourage deliberate wrapping. */
+.shows-heading p { max-width: 18rem; margin: 0 0 0.6rem; font-size: 0.92rem; line-height: 1.7; } /* Limits invitation width and sets its size and line spacing. */
+.show-empty { display: flex; min-height: 12rem; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 4rem; padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.55); border-bottom: 1px solid rgba(255, 255, 255, 0.55); } /* Styles the optional no-shows message area with flexible alignment and divider lines. */
+.show-empty p { margin: 0; font-size: clamp(1.5rem, 3vw, 2.7rem); font-weight: 700; } /* Makes the empty-state message large and bold. */
+.show-empty span { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; } /* Styles the empty-state detail in small uppercase monospace. */
+.site-footer { display: flex; justify-content: space-between; gap: 1rem; padding-top: 2rem; font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; } /* Places footer items at opposite ends and styles them as compact uppercase text. */
 
-@media (max-width: 760px) {
-	.site-header { min-height: 4.25rem; gap: 1rem; padding: 0 1.1rem; }
-	.wordmark { font-size: 0.76rem; }
-	.site-nav { gap: 0.85rem; }
-	.site-nav a { font-size: 0.68rem; }
-	.nav-index { display: none; }
-	.hero { min-height: calc(100svh - 4.25rem); flex-direction: column; align-items: stretch; gap: 2rem; padding: 4rem 7vw 5rem; }
-	.hero-copy, .hero-art { flex: auto; }
-	.hero h1 { font-size: clamp(4rem, 17vw, 7rem); }
-	.hero-art { min-height: 34vh; max-height: 23rem; }
-	.image-note { right: -0.4rem; bottom: 0.75rem; }
-	.scroll-note { display: none; }
-	.panel { padding: 5rem 7vw; }
-	.about, .career { flex-direction: column; align-items: stretch; justify-content: center; gap: 3rem; }
-	.section-heading { flex-basis: auto; }
-	.section-title { font-size: clamp(3.5rem, 15vw, 6rem); }
-	.career-list { flex-basis: auto; }
-	.shows-heading { align-items: start; flex-direction: column; }
-	.show-empty { align-items: start; flex-direction: column; justify-content: center; }
-	.site-footer { flex-direction: column; }
-}
+@media (max-width: 760px) { /* Applies the following layout adjustments at widths up to 760 pixels. */
+  .site-header { min-height: 4.25rem; gap: 1rem; padding: 0 1.1rem; } /* Shrinks header height and spacing for mobile. */
+  .wordmark { font-size: 0.76rem; } /* Reduces the site name size on small screens. */
+  .site-nav { gap: 0.85rem; } /* Tightens gaps between mobile navigation links. */
+  .site-nav a { font-size: 0.68rem; } /* Reduces navigation text size on mobile. */
+  .nav-index { display: none; } /* Hides numbered navigation labels to save space. */
+  .hero { min-height: calc(100svh - 4.25rem); flex-direction: column; align-items: stretch; gap: 2rem; padding: 4rem 7vw 5rem; } /* Stacks hero columns and adjusts height, gaps, and padding on mobile. */
+  .hero-copy, .hero-art { flex: auto; } /* Lets stacked hero text and image use their natural heights. */
+  .hero h1 { font-size: clamp(4rem, 17vw, 7rem); } /* Scales the hero heading for narrow viewports. */
+  .hero-art { min-height: 34vh; max-height: 23rem; } /* Bounds the hero image height on mobile. */
+  .image-note { right: -0.4rem; bottom: 0.75rem; } /* Adjusts the caption position for the smaller image. */
+  .scroll-note { display: none; } /* Hides the vertical scroll prompt on small screens. */
+  .panel { padding: 5rem 7vw; } /* Reduces panel padding on mobile. */
+  .about, .career { flex-direction: column; align-items: stretch; justify-content: center; gap: 3rem; } /* Stacks biography and career content vertically. */
+  .section-heading { flex-basis: auto; } /* Lets the section heading use its natural size in the stacked layout. */
+  .section-title { font-size: clamp(3.5rem, 15vw, 6rem); } /* Sets responsive section title sizes on mobile. */
+  .career-list { flex-basis: auto; } /* Lets the career list use its natural height. */
+  .shows-heading { align-items: start; flex-direction: column; } /* Stacks the shows title and invitation. */
+  .show-empty { align-items: start; flex-direction: column; justify-content: center; } /* Stacks and aligns the optional empty-state content. */
+  .site-footer { flex-direction: column; } /* Stacks footer contents vertically. */
+} /* Ends the mobile layout query. */
 
-@media (prefers-reduced-motion: reduce) {
-	html { scroll-behavior: auto; }
-}
+@media (prefers-reduced-motion: reduce) { /* Applies alternate settings when the device requests reduced motion. */
+  html { scroll-behavior: auto; } /* Disables smooth scrolling for people sensitive to motion. */
+} /* Ends the reduced-motion query. */
 
 /* Tour dates layout */
-.tour-list {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 2rem;
-}
+.tour-list { /* Arranges all tour events in a full-width vertical list. */
+  display: flex; /* Uses flexbox to control the list layout. */
+  flex-direction: column; /* Places tour event articles one below another. */
+  width: 100%; /* Makes the tour list span its container. */
+  margin-top: 2rem; /* Adds space above the tour dates. */
+} /* Ends the tour list rule. */
 
-.tour-date {
-  display: grid;
-  grid-template-columns: 150px 1fr auto;
-  align-items: center;
-  gap: 2rem;
-  padding: 1.75rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-  text-align: left;
-}
+.tour-date { /* Defines the grid layout and divider for each tour event. */
+  display: grid; /* Places the date, venue, and ticket link in grid cells. */
+  grid-template-columns: 150px 1fr auto; /* Gives the date a fixed width and the other columns flexible sizing. */
+  align-items: center; /* Vertically centers event details in the row. */
+  gap: 2rem; /* Adds space between the grid columns. */
+  padding: 1.75rem 0; /* Adds vertical room inside each event row. */
+  border-top: 1px solid rgba(255, 255, 255, 0.25); /* Separates this event from content above it. */
+  text-align: left; /* Aligns event text to the left. */
+} /* Ends the event row rule. */
 
-.tour-date time {
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
+.tour-date time { /* Styles the date shown in each event row. */
+  font-size: 0.85rem; /* Sets a compact date text size. */
+  letter-spacing: 0.08em; /* Adds spacing between date characters. */
+  white-space: nowrap; /* Keeps the date on one line. */
+} /* Ends the date text rule. */
 
-.tour-location h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1.25rem;
-}
+.tour-location h3 { /* Styles the city heading in each event location. */
+  margin: 0 0 0.4rem; /* Removes default spacing and leaves a small gap below. */
+  font-size: 1.25rem; /* Makes the city name prominent. */
+} /* Ends the city heading rule. */
 
-.tour-location p {
-  margin: 0;
-  opacity: 0.8;
-}
+.tour-location p { /* Styles the venue name below each city. */
+  margin: 0; /* Removes the paragraph's default margin. */
+  opacity: 0.8; /* Makes the venue name slightly less prominent. */
+} /* Ends the venue name rule. */
 
-.ticket-link {
-  justify-self: end;
-  white-space: nowrap;
-}
+.ticket-link { /* Positions and protects the ticket link text. */
+  justify-self: end; /* Aligns the link to the right of its grid cell. */
+  white-space: nowrap; /* Prevents the ticket label from wrapping. */
+} /* Ends the ticket link rule. */
 
-@media (max-width: 700px) {
-  .tour-date {
-    grid-template-columns: 1fr auto;
-    gap: 0.75rem;
-  }
+@media (max-width: 700px) { /* Adjusts event rows on screens up to 700 pixels wide. */
+  .tour-date { /* Changes the event grid for narrow screens. */
+    grid-template-columns: 1fr auto; /* Uses a flexible location column and a compact ticket column. */
+    gap: 0.75rem; /* Reduces spacing between mobile grid cells. */
+  } /* Ends the mobile event row rule. */
 
-  .tour-date time {
-    grid-column: 1 / -1;
-  }
+  .tour-date time { /* Repositions the event date in the mobile grid. */
+    grid-column: 1 / -1; /* Spans the date across all grid columns. */
+  } /* Ends the mobile date rule. */
 
-  .ticket-link {
-    grid-column: 2;
-    grid-row: 2;
-  }
-}
+  .ticket-link { /* Places the ticket link beside the location on mobile. */
+    grid-column: 2; /* Moves the link into the second grid column. */
+    grid-row: 2; /* Places the link on the second grid row. */
+  } /* Ends the mobile ticket link rule. */
+} /* Ends the mobile tour date query. */
 
 
 
 /* Spanish dusk — warm, cinematic, editorial */
-#shows {
-  background: linear-gradient(
-    120deg,
-    #392638 0%,
-    #75404a 32%,
-    #c66e60 65%,
-    #f2b77e 100%
-  ) !important;
-  padding: 4rem 3rem;
-  border-radius: 0;
-  color: #fff0e5;
-}
+#shows { /* Overrides the shows section with a dusk-colored design. */
+  background: linear-gradient( /* Starts the section's diagonal color gradient. */
+    120deg, /* Sets the gradient direction. */
+    #392638 0%, /* Starts with dark plum. */
+    #75404a 32%, /* Transitions to muted red at 32 percent. */
+    #c66e60 65%, /* Transitions to terracotta at 65 percent. */
+    #f2b77e 100% /* Ends with warm peach. */
+  ) !important; /* Forces this background to override earlier backgrounds. */
+  padding: 4rem 3rem; /* Sets the shows section's inner spacing. */
+  border-radius: 0; /* Keeps the section corners square. */
+  color: #fff0e5; /* Sets a warm light default text color for this section. */
+} /* Ends the shows section override. */
 
 /* Keep the text readable against the darker background */
-#shows .section-title,
-#shows .eyebrow,
-#shows .shows-heading p,
-#shows .tour-date,
-#shows .tour-date h3,
-#shows .tour-date p,
-#shows .ticket-link,
-#shows .site-footer {
-  color: #fff0e5;
-}
+#shows .section-title, /* Selects the shows section title. */
+#shows .eyebrow, /* Selects the shows section label. */
+#shows .shows-heading p, /* Selects the shows invitation paragraph. */
+#shows .tour-date, /* Selects each tour event row. */
+#shows .tour-date h3, /* Selects tour city headings. */
+#shows .tour-date p, /* Selects tour venue paragraphs. */
+#shows .ticket-link, /* Selects each ticket link. */
+#shows .site-footer { /* Selects shows text elements that need the light foreground. */
+  color: #fff0e5; /* Keeps selected text readable over the dark background. */
+} /* Ends the shows text color rule. */
 
 /* Delicate dividers */
-#shows .tour-date {
-  border-color: rgba(255, 240, 229, 0.3);
-}
+#shows .tour-date { /* Adjusts tour row dividers in the shows section. */
+  border-color: rgba(255, 240, 229, 0.3); /* Makes each divider subtle and warm. */
+} /* Ends the tour row border override. */
 
 
 /* About Me — elegant editorial headline */
-.about .section-title {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(4rem, 7.5vw, 7rem);
-  font-weight: 600;
-  line-height: 0.88;
-  letter-spacing: -0.035em;
-  text-transform: uppercase;
-}
+.about .section-title { /* Gives the about title an editorial type treatment. */
+  font-family: "Cormorant Garamond", Georgia, serif; /* Uses the display serif font with Georgia as a fallback. */
+  font-size: clamp(4rem, 7.5vw, 7rem); /* Scales the title between minimum and maximum sizes. */
+  font-weight: 600; /* Uses a semibold font weight. */
+  line-height: 0.88; /* Tightens vertical spacing between title lines. */
+  letter-spacing: -0.035em; /* Slightly tightens spacing between title characters. */
+  text-transform: uppercase; /* Displays the title in uppercase. */
+} /* Ends the about title rule. */
 
 
 /* Give the entire About Me section an editorial voice */
-.about .section-title,
-.about .about-copy blockquote,
-.about .about-copy p {
-  font-family: "Cormorant Garamond", Georgia, serif;
-}
+.about .section-title, /* Selects the about section title. */
+.about .about-copy blockquote, /* Selects the about section's quotation. */
+.about .about-copy p { /* Selects the about heading, quote, and biography paragraph. */
+  font-family: "Cormorant Garamond", Georgia, serif; /* Gives the selected about text a shared serif font. */
+} /* Ends the shared about typography rule. */
 
-.about .section-title {
-  font-weight: 600;
-}
+.about .section-title { /* Sets the about title's font weight. */
+  font-weight: 600; /* Keeps the title semibold. */
+} /* Ends the title weight override. */
 
-.about-copy blockquote {
-  margin: 0 0 2.5rem;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.2rem, 3.2vw, 3.2rem);
-  font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: #c45b32;
-  max-width: 18ch;
-}
+.about-copy blockquote { /* Styles the about quotation as display text. */
+  margin: 0 0 2.5rem; /* Removes default margins and adds space below the quote. */
+  font-family: "Cormorant Garamond", Georgia, serif; /* Uses the editorial serif family for the quote. */
+  font-size: clamp(2.2rem, 3.2vw, 3.2rem); /* Scales the quote size responsively. */
+  font-weight: 600; /* Makes the quote semibold. */
+  line-height: 1.08; /* Keeps multi-line quote spacing compact. */
+  letter-spacing: -0.02em; /* Slightly tightens the quote's characters. */
+  color: #c45b32; /* Colors the quote terracotta. */
+  max-width: 18ch; /* Limits the quote width to roughly 18 characters per line. */
+} /* Ends the quote styling rule. */
 
-.about .about-copy p {
-  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
-  line-height: 1.65;
-}
+.about .about-copy p { /* Sets the biography paragraph's size and line spacing. */
+  font-size: clamp(1.2rem, 1.5vw, 1.4rem); /* Scales paragraph text within the specified range. */
+  line-height: 1.65; /* Adds comfortable vertical spacing between lines. */
+} /* Ends the biography paragraph rule. */
 
 /* Expressive editorial typography */
-.hero h1,
-.section-title,
-.about-copy blockquote {
-  font-family: "Cormorant Garamond", Georgia, serif;
-}
+.hero h1, /* Selects the main hero heading. */
+.section-title, /* Selects section headings. */
+.about-copy blockquote { /* Selects expressive page headings and the quotation. */
+  font-family: "Cormorant Garamond", Georgia, serif; /* Applies the display serif font to these elements. */
+} /* Ends the display typography rule. */
 
 /* Clean, readable supporting text */
-.hero-intro,
-.about-copy p,
-.career-list p,
-.shows-heading > p {
-  font-family: "Manrope", sans-serif;
-}
+.hero-intro, /* Selects the introductory paragraph in the hero. */
+.about-copy p, /* Selects the biography paragraph. */
+.career-list p, /* Selects career milestone paragraphs. */
+.shows-heading > p { /* Selects supporting paragraphs throughout the page. */
+  font-family: "Manrope", sans-serif; /* Uses the sans-serif font for supporting copy. */
+} /* Ends the supporting text font rule. */
 
 /* Small labels and navigation details */
-.eyebrow,
-.nav-index,
-.site-nav,
-.tour-date time {
-  font-family: "DM Mono", monospace;
-}
-@media (max-width: 760px) {
-    #shows {
-        padding: 5rem 7vw;
-    }
-}
+.eyebrow, /* Selects the small uppercase section labels. */
+.nav-index, /* Selects numbered navigation labels. */
+.site-nav, /* Selects the navigation container and its descendants. */
+.tour-date time { /* Selects small labels, navigation, and event dates. */
+  font-family: "DM Mono", monospace; /* Uses monospace type for compact utility text. */
+} /* Ends the small-label typography rule. */
+@media (max-width: 760px) { /* Adjusts the shows section padding on small screens. */
+    #shows { /* Targets the shows section within this mobile query. */
+        padding: 5rem 7vw; /* Adds responsive horizontal and vertical space on mobile. */
+    } /* Ends the mobile shows rule. */
+} /* Ends the final mobile media query. */
